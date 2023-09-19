@@ -1,5 +1,7 @@
+//importing packages
 import java.lang.Math;
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -20,10 +22,10 @@ public class Main {
         int numOfPeople = Integer.parseInt(numOfPeoplePlaceholder);
 
         //calculations
-        double tipAmount = ((totalBill * (tipPercent / 100))+0.05)/2;
-        double totalBillWithTip = ((tipAmount + totalBill)+0.05)/2;
-        double tipPerPerson = ((tipAmount / numOfPeople)+0.05)/2;
-        double totalPerPerson = ((totalBillWithTip / numOfPeople)+0.05)/2;
+        double tipAmount = Math.round((totalBill * (tipPercent / 100))*100.0)/100.0;
+        double totalBillWithTip = tipAmount + totalBill;
+        double tipPerPerson = tipAmount / numOfPeople;
+        double totalPerPerson = totalBillWithTip / numOfPeople;
 
         //Output
         System.out.println("The amount you need to tip for the meal is " + tipAmount);
