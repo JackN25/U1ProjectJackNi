@@ -1,7 +1,7 @@
 //importing packages
-import java.lang.Math;
 import java.util.Scanner;
-
+import java.text.DecimalFormat;
+import java.math.RoundingMode;
 public class Main {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
@@ -22,15 +22,19 @@ public class Main {
         int numOfPeople = Integer.parseInt(numOfPeoplePlaceholder);
 
         //calculations
-        double tipAmount = Math.round((totalBill * (tipPercent / 100))*100.0)/100.0;
+        double tipPercentDecimal = tipPercent / 100;
+        double tipAmount = totalBill * tipPercentDecimal;
         double totalBillWithTip = tipAmount + totalBill;
         double tipPerPerson = tipAmount / numOfPeople;
         double totalPerPerson = totalBillWithTip / numOfPeople;
 
         //Output
-        System.out.println("The amount you need to tip for the meal is " + tipAmount);
-        System.out.println("The total cost of the bill is " + totalBillWithTip);
-        System.out.println("The amount of tip per person is " + tipPerPerson);
-        System.out.println("The total amount per person is " + totalPerPerson);
+        DecimalFormat df = new DecimalFormat("#.00");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+
+        System.out.println("The amount you need to tip for the meal is " + df.format(tipAmount));
+        System.out.println("The total cost of the bill is " + df.format(totalBillWithTip));
+        System.out.println("The amount of tip per person is " + df.format(tipPerPerson));
+        System.out.println("The total amount per person is " + df.format(totalPerPerson));
     }
 }
