@@ -28,10 +28,11 @@ public class Main {
         double tipPerPerson = tipAmount / numOfPeople;
         double totalPerPerson = totalBillWithTip / numOfPeople;
 
-        //Output
+        //Decimal Formatting and rounding
         DecimalFormat df = new DecimalFormat("#.00");
         df.setRoundingMode(RoundingMode.HALF_UP);
 
+        //Outputs with rounded variables
         System.out.println("The amount you need to tip for the meal is " + df.format(tipAmount));
         System.out.println("The total cost of the bill is " + df.format(totalBillWithTip));
         System.out.println("The amount of tip per person is " + df.format(tipPerPerson));
